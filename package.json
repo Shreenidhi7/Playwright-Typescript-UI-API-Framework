@@ -1,0 +1,28 @@
+{
+  "name": "playwright-typescript-ui-api-framework",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Shreenidhi7/Playwright-Typescript-UI-API-Framework.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Shreenidhi7/Playwright-Typescript-UI-API-Framework/issues"
+  },
+  "homepage": "https://github.com/Shreenidhi7/Playwright-Typescript-UI-API-Framework#readme",
+  "devDependencies": {
+    "@faker-js/faker": "^10.5.0",
+    "@playwright/test": "^1.62.1",
+    "@types/fs-extra": "^11.0.4",
+    "@types/node": "^26.2.0"
+  },
+  "dependencies": {
+    "fs-extra": "^11.4.0"
+  }
+}
