@@ -7,11 +7,6 @@ test('My Account User Login', async ({ page }) => {
     console.log("access_token", access_token);
 
     await page.goto('https://practicesoftwaretesting.com/');
-    // await page.locator('[data-test="nav-sign-in"]').click();
-    // await page.locator('[data-test="email"]').fill('Caroline91@gmail.com');
-    // await page.locator('[data-test="password"]').click();
-    // await page.locator('[data-test="password"]').fill('Test@9099');
-    // await page.locator('[data-test="login-submit"]').click();
     // Inject token into LocalStorage via evaluate
     await page.evaluate((token) => {
         window.localStorage.setItem("auth-token", token)
