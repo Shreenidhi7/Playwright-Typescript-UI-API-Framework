@@ -1,0 +1,64 @@
+import { APIRequestContext, test } from "@playwright/test";
+import { Url } from "node:url";
+
+export class RequestHandler {
+    private request: APIRequestContext
+    private baseUrl: string | undefined
+    private apiBaseUrl: string
+    private apiPath: string = ""
+    private queryParams: object = {}
+    private apiHeaders: Record<string, string> = {}
+    private apiBody: object = {}
+
+    constructor(request: APIRequestContext, apiBaseUrl: string) {
+        this.request = request
+        this.apiBaseUrl = apiBaseUrl
+    }
+
+    //Builder Pattern (Fluent Pattern)
+    /*
+    * const request = new RequestHandler("dummy request", "dummy url")
+    * request.url("url")
+    * request.path("path")
+    * request.url("url").path("path") => Method Chainig
+    */
+    //setter method
+    url(baseUrl: string) {
+        this.baseUrl = baseUrl
+        return this
+    }
+
+    path(apiPath: string) {
+        this.apiPath = apiPath
+        return this
+    }
+
+    params(queryParams: object) {
+        this.queryParams = queryParams
+        return this
+    }
+
+    headers(apiHeaders: Record<string, string>) {
+        this.apiHeaders = apiHeaders
+        return this
+    }
+
+    body(apiBody: object) {
+        this.apiBody = apiBody
+        return this
+    }
+
+    async getRequest() {
+        let response: any
+        const fullUrl = `${this.apiBaseUrl}${this.apiPath}`
+        await test.step(`Get Request to: ${fullUrl}`, async () => {
+            response = await this.request.get(fullUrl, {
+                headers: this.apiHeaders,
+                params: this.queryParams as {
+                    [key: string]: string | number | boolean
+                }
+            })
+        })
+        return response
+    }
+}
