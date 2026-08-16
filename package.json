@@ -20,7 +20,8 @@
     "@faker-js/faker": "^10.5.0",
     "@playwright/test": "^1.62.1",
     "@types/fs-extra": "^11.0.4",
-    "@types/node": "^26.2.0"
+    "@types/node": "^26.2.0",
+    "ajv": "^8.20.0"
   },
   "dependencies": {
     "fs-extra": "^11.4.0"
