@@ -61,4 +61,26 @@ export class RequestHandler {
         })
         return response
     }
+
+    async postRequest() {
+        let response: any
+        const fullUrl = `${this.apiBaseUrl}${this.apiPath}`
+        await test.step(`Post Request to: ${fullUrl}`, async () => {
+            response = await this.request.post(fullUrl, {
+                data: this.apiBody,
+                headers: this.apiHeaders,
+            })
+            this.cleanup()
+        })
+        return response
+    }
+
+    private cleanup() {
+        test.step("Cleanup", async () => {
+            this.apiBody = {}
+            this.apiHeaders = {}
+            this.apiPath = ""
+            this.queryParams = {}
+        })
+    }
 }
