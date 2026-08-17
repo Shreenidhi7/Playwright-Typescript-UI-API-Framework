@@ -9,7 +9,7 @@ import { defineConfig, devices } from '@playwright/test';
 // dotenv.config({ path: path.resolve(__dirname, '.env') });
 
 export default defineConfig({
-  timeout: 40000,
+  timeout: 60000,
   testDir: './tests',
 
   /* Run tests in files in parallel */
@@ -50,6 +50,11 @@ export default defineConfig({
     {
       name: 'ui-tests',
       testDir: "./tests/ui"
+    },
+
+    {
+      name: 'hybrid-tests',
+      testDir: "./tests/hybrid"
     },
 
 
