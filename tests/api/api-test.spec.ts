@@ -1,12 +1,14 @@
-import { test, request } from "@playwright/test";
+import { test, expect } from "@playwright/test";
 import { faker } from "@faker-js/faker";
 import { writeFileSync } from "fs-extra";
+import { validateSchema } from "../../utils/schemaValidator";
 
 
-const email: string = faker.internet.email()
+let email: string;
 const password: string = "Test@9099"
 
-test("User Registration Test", async ({ request }) => {
+test.beforeEach(async ({ request }) => {
+    email = faker.internet.email()
     const user_registration_response = await request.post("https://api.practicesoftwaretesting.com/users/register", {
         data: {
             "first_name": faker.person.firstName(),
@@ -26,7 +28,6 @@ test("User Registration Test", async ({ request }) => {
     })
 
     console.log("user_registration_response", await user_registration_response.json());
-
 })
 
 test("User Login Test", async ({ request }) => {
@@ -50,4 +51,18 @@ test("User Login Test", async ({ request }) => {
     // console.log("Token", tokenValue["auth-token"]);
 
 
+})
+
+test("Validate User Login Response Schema", async ({ request }) => {
+    const user_login_response = await request.post("https://api.practicesoftwaretesting.com/users/login", {
+        data: {
+            "email": email,
+            "password": password
+        },
+    })
+
+    expect(user_login_response.status()).toBe(200)
+    const user_login_JsonResponse = await user_login_response.json()
+
+    await validateSchema(user_login_JsonResponse, "POST_login_schema.json")
 })
