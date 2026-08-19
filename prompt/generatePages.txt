@@ -1,0 +1,63 @@
+Create or update Playwright Page Object Model classes and custom fixtures for this repository.
+
+Repository context:
+- Playwright + TypeScript test framework.
+- UI tests are under tests/ui.
+- Page objects belong under pages/.
+- Custom Playwright fixtures belong under fixtures/.
+- Use @playwright/test and existing repository conventions.
+
+Before editing:
+1. Read the target UI spec and nearby UI tests.
+2. Identify each distinct application screen or responsibility from the actual flow.
+3. Inspect existing selectors, waits, assertions, and fixture patterns.
+4. State one local hypothesis about the refactor and one focused validation check.
+
+Implementation rules:
+- Create one page class per meaningful screen or responsibility.
+- Page objects own locators and reusable interactions only.
+- Keep test data, generated values, scenario order, and all assertions in the spec.
+- Create custom fixtures with test.extend().
+- Every page-object fixture must create a fresh instance from the test's built-in page fixture for isolation.
+- Use a single login(email, password) method that includes filling credentials and clicking Sign In; do not create a separate clickSignIn method.
+- When an address form has multiple fields, expose one fillAddressForm(address) method with a typed address object.
+- Preserve existing waits, assertion expressions, assertion wording, and assertion locations unless the user explicitly asks for changes.
+- Do not silently change selectors, test behavior, authentication, data generation, or other tests.
+- Prefer existing locators and APIs over new abstractions.
+- Keep methods concise and typed. Do not place expect() assertions inside page objects.
+
+Spec refactor rules:
+- Import test and expect from the custom fixture module.
+- Replace direct locator interactions with page-object method calls.
+- Preserve the existing test flow and assertion variables where practical.
+- Keep assertions in the spec, including text-content assertions.
+
+Validation:
+1. Run the narrowest relevant Playwright test, preferably with --project=ui-tests.
+2. Run npx playwright test --list to catch fixture/import/discovery errors.
+3. Run the repository's available TypeScript check if configured.
+4. Report any pre-existing failures separately from failures caused by the change.
+
+Requested change:
+[Describe the target UI test or new flow here.]
+
+
+For my UI Tests, inside folder /ui/addItemToCart.spec.ts.file
+I want to follow Page Object Model
+And to follow it, i want to create pages using fixtures.
+Then respective page files for each page that we use.
+
+Is it possible for you to figure out the pages yourself and provide the reasoning for each page file you create and the fixture we create for creating out pages.
+
+We can have login function to click on signin button, seperate clickSignIn function not required
+Fine for homePage, productListingPage, productDetailsPage. cartPage
+Create a function to fill all details together fillAddressForm()
+Fixture Scope
+
+Need fesh instance for isolation
+Current test is working file, and waits are added wherever required.
+So donot change it and make sure the assertions added are kept as it is and not updated
+Also make sure assertions are prt of my spec file instead of pages
+
+Also i need you to create a reusable prompt file for this change, which i can use for current changes and future changes
+Store prompt file in -> prompt folder and then name this file as - generatePages.txt
