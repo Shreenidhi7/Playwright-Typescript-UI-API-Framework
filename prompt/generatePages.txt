@@ -39,25 +39,6 @@ Validation:
 4. Report any pre-existing failures separately from failures caused by the change.
 
 Requested change:
-[Describe the target UI test or new flow here.]
+Describe the target UI spec or flow here, including its path and any page responsibilities that should be covered.
 
-
-For my UI Tests, inside folder /ui/addItemToCart.spec.ts.file
-I want to follow Page Object Model
-And to follow it, i want to create pages using fixtures.
-Then respective page files for each page that we use.
-
-Is it possible for you to figure out the pages yourself and provide the reasoning for each page file you create and the fixture we create for creating out pages.
-
-We can have login function to click on signin button, seperate clickSignIn function not required
-Fine for homePage, productListingPage, productDetailsPage. cartPage
-Create a function to fill all details together fillAddressForm()
-Fixture Scope
-
-Need fesh instance for isolation
-Current test is working file, and waits are added wherever required.
-So donot change it and make sure the assertions added are kept as it is and not updated
-Also make sure assertions are prt of my spec file instead of pages
-
-Also i need you to create a reusable prompt file for this change, which i can use for current changes and future changes
-Store prompt file in -> prompt folder and then name this file as - generatePages.txt
+Use the target spec and nearby tests as the source of truth. Infer page objects only from the actual flow, explain the responsibility of each page file and fixture change, and preserve the existing behavior unless explicitly asked otherwise.
