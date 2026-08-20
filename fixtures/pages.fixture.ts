@@ -1,6 +1,7 @@
 import { test as base, expect } from "@playwright/test";
 import { CartPage } from "../pages/cartPage";
 import { CheckoutPage } from "../pages/checkoutPage";
+import { ContactPage } from "../pages/contactPage";
 import { HomePage } from "../pages/homePage";
 import { LoginPage } from "../pages/loginPage";
 import { ProductDetailsPage } from "../pages/productDetailsPage";
@@ -8,6 +9,7 @@ import { ProductListingPage } from "../pages/productListingPage";
 import { MyAccountPage } from "../pages/myAccountPage";
 
 export const test = base.extend<{
+    contactPage: ContactPage;
     myAccountPage: MyAccountPage;
     loginPage: LoginPage;
     homePage: HomePage;
@@ -16,6 +18,9 @@ export const test = base.extend<{
     cartPage: CartPage;
     checkoutPage: CheckoutPage;
 }>({
+    contactPage: async ({ page }, use) => {
+        await use(new ContactPage(page));
+    },
     myAccountPage: async ({ page }, use) => {
         await use(new MyAccountPage(page));
     },
@@ -38,5 +43,4 @@ export const test = base.extend<{
         await use(new CheckoutPage(page));
     },
 });
-
 export { expect };

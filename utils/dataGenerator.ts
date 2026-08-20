@@ -31,3 +31,11 @@ export function addToCartPayload(){
     return itemInCartBody
 
 }
+
+export function generateWebmasterMessagePayload() {
+    const raw = fs.readFileSync("./request-objects/POST-message.json", "utf-8")
+    const messagePayload = JSON.parse(raw)
+    const messageBody = structuredClone(messagePayload)
+    messageBody.message = faker.lorem.sentence()
+    return messageBody
+}

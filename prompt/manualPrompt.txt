@@ -1,0 +1,21 @@
+Route the application:
+https://practicesoftwareteesting.com/auth/login
+Sign in with credentials
+email - customer2@practicesoftwaretesting.com
+password - welcome01
+
+Then go to url - https://practicesoftwaretesting.com/contact
+Conduct a quick 2 test cases exploratory test as per priority
+I need only crictical and high priority test cases
+
+Use playwright mcp to interact with app.  So i can review the steps and actions taken by you
+
+Make sure to capture the locators and API calls during this flow execution so that we can discuss different approaches for creating test cases
+
+Keep your responses crisp and brief as per my ask
+Crisp Description for:
+1. Locators
+2. Steps Taken
+3. Network Calls
+During the execution of 2 test cases
+

@@ -1,0 +1,27 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "POST Message Response",
+    "type": "object",
+    "properties": {
+        "subject": {
+            "type": "string"
+        },
+        "message": {
+            "type": "string"
+        },
+        "user_id": {
+            "type": "string"
+        },
+        "status": {
+            "type": "string",
+            "const": "NEW"
+        },
+        "id": {
+            "type": "string"
+        },
+        "created_at": {
+            "type": "string"
+        }
+    },
+    "required": ["subject", "message", "user_id", "status", "id", "created_at"]
+}
